@@ -13,13 +13,13 @@ import java.util.Set;
 public interface ScrapingDataService {
 
     /**
-     * Performs scraping of websites by using the url passed as argument and its transformations. These URL
+     * <p>Performs scraping of websites by using the url passed as argument and its transformations. These URL
      * transformations can occur in case there is pagination in the website accessed by the original URL and
-     * usually this is resolved by appending the page number.
+     * usually this is resolved by appending the page number. </p>
      * Based on the shop website content, this method can contain custom logic in order to traverse through all
-     * products of the given categoryId.
-     * Finally, while traversing through the product elements, this method performs data extraction by persisting the
-     * product into the set of {@link Product}.
+     * products of given categoryId.
+     * <p>Finally, while traversing through the product elements, this method performs data extraction by persisting the
+     * product into the set of {@link Product}.</p>
      *
      * @param shop name of the shop.
      * @param categoryId category id.
@@ -28,7 +28,7 @@ public interface ScrapingDataService {
      * @return set of {@link Product} which represent all product elements of given category that were scraped for
      * given shop.
      *
-     * @throws IOException
+     * @throws IOException in case error occurs during executing the get request.
      */
     Set<Product> scrapeAndExtract(String shop, int categoryId, String url) throws IOException;
 

@@ -9,6 +9,10 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Properties class for mapping the scraping configurations.
+ * It contains a map of {@link List} of {@link ScrapingPropertiesModel} per shop name.
+ */
 @Getter
 @Setter
 @Configuration

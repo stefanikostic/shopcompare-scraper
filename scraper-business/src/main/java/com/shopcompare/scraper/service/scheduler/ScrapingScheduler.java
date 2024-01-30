@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Service wrapping multiple scheduled methods dedicated for scraping products per shop.
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -26,6 +29,11 @@ public class ScrapingScheduler {
 
     private final RabbitMQProductProducer rabbitMQProductProducer;
 
+    /**
+     * Fetches the scraping configurations for Setec shop, performs the scraping using the
+     * configurations per category and sends each batch of scraped products to RabbitMQ queue.
+     *
+     */
     @Scheduled(fixedRate = 60000)
     public void scrapeSetec() {
         List<ScrapingPropertiesModel> scrapingPropertiesModels =

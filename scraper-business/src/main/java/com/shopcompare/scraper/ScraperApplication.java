@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * Spring boot application class for scraper application.
+ */
 @EnableScheduling
 @SpringBootApplication
 @ComponentScan(basePackageClasses = {ScraperMarker.class,

@@ -1,6 +1,7 @@
 package com.shopcompare.scraper.service;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
+import com.shopcompare.scraper.service.exception.FailedScrapingException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class ScrapePerformer {
             scrapingDataService = ScrapingDataServiceFactory.buildDataExtractor(shop);
             return scrapingDataService.scrapeAndExtract(shop, category, url);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FailedScrapingException(shop);
         }
     }
 }

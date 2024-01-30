@@ -16,6 +16,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Implementation of {@link ScrapingDataService} for Setec shop.
+ */
 @Slf4j
 @Service
 public class SetecScrapingDataService implements ScrapingDataService {
@@ -36,6 +39,10 @@ public class SetecScrapingDataService implements ScrapingDataService {
     private static final String CASH_PRICE = "cena_za_kesh";
     private static final String COMMA_SYMBOL = ",";
 
+    /**
+     * Traverses through all pages of the given shop website filtered by certain category id. <br/>
+     * {@inheritDoc}
+     */
     @Override
     public Set<Product> scrapeAndExtract(String shop, int categoryId, String url) throws IOException {
         url += LIMIT_100_PRODUCTS_QUERY_PARAM;
