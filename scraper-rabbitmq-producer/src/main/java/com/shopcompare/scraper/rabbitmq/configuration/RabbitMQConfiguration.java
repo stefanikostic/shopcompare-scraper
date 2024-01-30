@@ -9,6 +9,9 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration class that defines beans required for configuring RabbitMQ.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class RabbitMQConfiguration {
