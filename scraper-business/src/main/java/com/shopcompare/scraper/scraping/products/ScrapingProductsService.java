@@ -1,4 +1,4 @@
-package com.shopcompare.scraper.service;
+package com.shopcompare.scraper.scraping.products;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
 
@@ -10,7 +10,7 @@ import java.util.Set;
  * Since the source content is different, the implementations of this interface should contain custom logic
  * for scraping the whole product content of a category and extract the results.
  */
-public interface ScrapingDataService {
+public interface ScrapingProductsService {
 
     /**
      * <p>Performs scraping of websites by using the url passed as argument and its transformations. These URL
@@ -22,7 +22,7 @@ public interface ScrapingDataService {
      * product into the set of {@link Product}.</p>
      *
      * @param shop name of the shop.
-     * @param categoryId category id.
+     * @param categoryId category name.
      * @param url website url, can be used to a construct a new url for another scraping to resolve website pagination.
      *
      * @return set of {@link Product} which represent all product elements of given category that were scraped for
@@ -30,7 +30,7 @@ public interface ScrapingDataService {
      *
      * @throws IOException in case error occurs during executing the get request.
      */
-    Set<Product> scrapeAndExtract(String shop, int categoryId, String url) throws IOException;
+    Set<Product> scrapeAndExtract(String shop, String categoryId, String url) throws IOException;
 
     String shopName();
 }

@@ -1,4 +1,4 @@
-package com.shopcompare.scraper.service.exception;
+package com.shopcompare.scraper.scraping.exception;
 
 import lombok.Getter;
 

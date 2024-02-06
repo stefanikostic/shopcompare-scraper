@@ -1,6 +1,7 @@
-package com.shopcompare.scraper.service;
+package com.shopcompare.scraper.scraping.products;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
+import com.shopcompare.scraper.scraping.products.ScrapingProductsService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -17,11 +18,11 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Implementation of {@link ScrapingDataService} for Setec shop.
+ * Implementation of {@link ScrapingProductsService} for Setec shop.
  */
 @Slf4j
 @Service
-public class SetecScrapingDataService implements ScrapingDataService {
+public class SetecScrapingProductsService implements ScrapingProductsService {
 
     private static final String PRODUCT = "product";
     private static final String NAME = "name";
@@ -44,7 +45,7 @@ public class SetecScrapingDataService implements ScrapingDataService {
      * {@inheritDoc}
      */
     @Override
-    public Set<Product> scrapeAndExtract(String shop, int categoryId, String url) throws IOException {
+    public Set<Product> scrapeAndExtract(String shop, String category, String url) throws IOException {
         url += LIMIT_100_PRODUCTS_QUERY_PARAM;
         Set<Product> products = new HashSet<>();
         Document document = Jsoup.connect(url).get();
@@ -60,7 +61,7 @@ public class SetecScrapingDataService implements ScrapingDataService {
                 break;
             }
 
-            List<Product> productsFromPage = extractProducts(shop, categoryId, productElements);
+            List<Product> productsFromPage = extractProducts(shop, category, productElements);
             products.addAll(productsFromPage);
 
             page++;
@@ -69,7 +70,7 @@ public class SetecScrapingDataService implements ScrapingDataService {
         return products;
     }
 
-    private List<Product> extractProducts(String shop, int category, Elements productElements) {
+    private List<Product> extractProducts(String shop, String category, Elements productElements) {
         List<Product> products = new ArrayList<>();
         for (Element productElement : productElements) {
 
@@ -89,7 +90,6 @@ public class SetecScrapingDataService implements ScrapingDataService {
             boolean isAvailable = !CollectionUtils.isEmpty(productElement.getElementsByClass(ON_LAGER_CLASS));
 
             Double originalPrice = resolveOriginalPrice(productElement);
-
 
             Double promotionalPrice = resolvePromotionalPrice(productElement);
 
