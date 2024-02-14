@@ -22,15 +22,20 @@ public class SetecCategoryLinksFetcher implements CategoryLinksFetcher {
     private static final String SETEC = "Setec";
     private static final String LI_TAG = "li";
     private static final String A_TAG = "a";
+    private static final String UL_TAG = "ul";
+    private static final String HREF_ATTRIBUTE_KEY = "href";
+    private static final String MENU_CLASS_NAME = "menu";
+    private static final String MEGAMENU_WRAPPER_CLASS_NAME = "megamenu-wrapper";
 
     @Override
     public Set<CategoryLink> fetchCategoriesLinks(String url) {
         try {
             Document document = Jsoup.connect(url).get();
-            Element menuWrapper = document.getElementsByClass("megamenu-wrapper").first();
+            Element menuWrapper = document.getElementsByClass(MEGAMENU_WRAPPER_CLASS_NAME).first();
             Set<CategoryLink> categoryLinks = new HashSet<>();
             if (menuWrapper != null) {
-                Elements menuElements = menuWrapper.getElementsByClass("menu");
+                Elements menuElements = menuWrapper.getElementsByClass(MENU_CLASS_NAME);
+
                 Elements allListElements = new Elements();
                 for (Element menuElement : menuElements) {
                     Elements listElements = menuElement.getElementsByTag(LI_TAG);
@@ -39,12 +44,12 @@ public class SetecCategoryLinksFetcher implements CategoryLinksFetcher {
 
                 Elements linkElements = new Elements();
                 for (Element liElement : allListElements) {
-                    linkElements.addAll(resolveListElements(liElement));
+                    linkElements.addAll(resolveLinkElements(liElement));
                 }
 
                 for (Element linkElement : linkElements) {
-                    CategoryLink categoryLink = new CategoryLink(linkElement.attr("href"), linkElement.text(),
-                            SETEC);
+                    CategoryLink categoryLink = new CategoryLink(linkElement.attr(HREF_ATTRIBUTE_KEY),
+                            linkElement.text(), SETEC);
                     categoryLinks.add(categoryLink);
                 }
             }
@@ -56,14 +61,17 @@ public class SetecCategoryLinksFetcher implements CategoryLinksFetcher {
         }
     }
 
-    private Elements resolveListElements(Element liElement) {
-        Elements liElements = liElement.getElementsByTag(LI_TAG);
-        if (liElements.isEmpty() && !liElement.getElementsByTag(A_TAG).isEmpty()) {
-            return liElement.getElementsByTag(A_TAG);
+    private Elements resolveLinkElements(Element liElement) {
+        Elements ulElements = liElement.getElementsByTag(UL_TAG);
+        Element ulElement = ulElements.first();
+        if (ulElement == null) {
+            Elements linkElements = liElement.getElementsByTag(A_TAG);
+
+            return !linkElements.isEmpty() ? linkElements : new Elements();
         } else {
             Elements linkElements = new Elements();
-            for (Element element : liElements) {
-                linkElements.addAll(resolveListElements(element));
+            for (Element element : ulElement.getElementsByTag(LI_TAG)) {
+                linkElements.addAll(resolveLinkElements(element));
             }
             return linkElements;
         }

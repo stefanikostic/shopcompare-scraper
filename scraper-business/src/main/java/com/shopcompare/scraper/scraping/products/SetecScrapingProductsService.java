@@ -1,7 +1,6 @@
 package com.shopcompare.scraper.scraping.products;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
-import com.shopcompare.scraper.scraping.products.ScrapingProductsService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -39,6 +38,7 @@ public class SetecScrapingProductsService implements ScrapingProductsService {
     private static final String PAGE_QUERY_PARAM = "&page=";
     private static final String CASH_PRICE = "cena_za_kesh";
     private static final String COMMA_SYMBOL = ",";
+    private static final String MULTIPLE_SPACE_REGEX = "\\s+";
 
     /**
      * Traverses through all pages of the given shop website filtered by certain category id. <br/>
@@ -48,7 +48,9 @@ public class SetecScrapingProductsService implements ScrapingProductsService {
     public Set<Product> scrapeAndExtract(String shop, String category, String url) throws IOException {
         url += LIMIT_100_PRODUCTS_QUERY_PARAM;
         Set<Product> products = new HashSet<>();
+
         Document document = Jsoup.connect(url).get();
+
         int page = 1;
         while (true) {
             if (page > 1) {
@@ -130,7 +132,7 @@ public class SetecScrapingProductsService implements ScrapingProductsService {
     private Double formatPrice(Element originalPriceElement) {
         Double originalPrice = null;
         if (originalPriceElement != null) {
-            String originalPriceText = originalPriceElement.text().split("\\s+")[0];
+            String originalPriceText = originalPriceElement.text().split(MULTIPLE_SPACE_REGEX)[0];
             originalPriceText = originalPriceText.replace(COMMA_SYMBOL, StringUtils.EMPTY);
             originalPrice = Double.parseDouble(originalPriceText);
         }
