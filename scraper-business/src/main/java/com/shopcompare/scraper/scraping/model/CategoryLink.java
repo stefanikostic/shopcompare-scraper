@@ -8,4 +8,18 @@ package com.shopcompare.scraper.scraping.model;
  * @param shopName name of the shop
  */
 public record CategoryLink(String url, String categoryName, String shopName) {
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof CategoryLink objCategoryLink) {
+            return this.url.equals(objCategoryLink.url);
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return url.hashCode();
+    }
 }
