@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class DefaultScrapingProductsService implements ScrapingProductsService {
     @Override
-    public Set<Product> scrapeAndExtract(String shop, String categoryId, String url) {
+    public Set<Product> scrapeAndExtract(String shop, String category, String url) {
         return null;
     }
 

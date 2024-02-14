@@ -11,7 +11,6 @@ public interface CategoryLinksFetcher {
 
     /**
      * Gets category details for a shop.
-     * @param name name of the shop.
      * @param url link of the shop website where the categories can be scraped from.
      *
      * @return set of {@link CategoryLink} that were scraped.

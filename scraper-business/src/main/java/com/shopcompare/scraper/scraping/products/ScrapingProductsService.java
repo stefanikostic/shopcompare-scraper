@@ -17,12 +17,12 @@ public interface ScrapingProductsService {
      * transformations can occur in case there is pagination in the website accessed by the original URL and
      * usually this is resolved by appending the page number. </p>
      * Based on the shop website content, this method can contain custom logic in order to traverse through all
-     * products of given categoryId.
+     * products of given category.
      * <p>Finally, while traversing through the product elements, this method performs data extraction by persisting the
      * product into the set of {@link Product}.</p>
      *
      * @param shop name of the shop.
-     * @param categoryId category name.
+     * @param category category name.
      * @param url website url, can be used to a construct a new url for another scraping to resolve website pagination.
      *
      * @return set of {@link Product} which represent all product elements of given category that were scraped for
@@ -30,7 +30,7 @@ public interface ScrapingProductsService {
      *
      * @throws IOException in case error occurs during executing the get request.
      */
-    Set<Product> scrapeAndExtract(String shop, String categoryId, String url) throws IOException;
+    Set<Product> scrapeAndExtract(String shop, String category, String url) throws IOException;
 
     String shopName();
 }

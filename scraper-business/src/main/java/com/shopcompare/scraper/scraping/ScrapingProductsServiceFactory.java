@@ -17,6 +17,13 @@ public class ScrapingProductsServiceFactory {
 
     private final Map<String, ScrapingProductsService> scrapingProductsServiceByShopName = new HashMap<>();
 
+    /**
+     * Constructs the {@link ScrapingProductsServiceFactory} instance by collecting all bean implementations
+     * of {@link ScrapingProductsService} and using them to populate the
+     * {@link ScrapingProductsServiceFactory#scrapingProductsServiceByShopName}.
+     *
+     * @param scrapingProductsServices all registered beans that are instances of {@link ScrapingProductsService}.
+     */
     public ScrapingProductsServiceFactory(List<ScrapingProductsService> scrapingProductsServices) {
         for (ScrapingProductsService scrapingProductsService : scrapingProductsServices) {
             scrapingProductsServiceByShopName.put(scrapingProductsService.shopName(), scrapingProductsService);
@@ -24,7 +31,8 @@ public class ScrapingProductsServiceFactory {
     }
 
     /**
-     * Resolves {@link ScrapingProductsService} based on the provided shop.
+     * Looks for a corresponding {@link ScrapingProductsService} in the map of all registered
+     * {@link ScrapingProductsService} beans by the corresponding shop name.
      *
      * @param shop name of the shop.
      *
