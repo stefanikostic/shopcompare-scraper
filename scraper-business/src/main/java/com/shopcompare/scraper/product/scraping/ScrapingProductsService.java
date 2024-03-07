@@ -1,8 +1,9 @@
-package com.shopcompare.scraper.scraping.products;
+package com.shopcompare.scraper.product.scraping;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 /**

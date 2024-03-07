@@ -1,4 +1,4 @@
-package com.shopcompare.scraper.scraping.products;
+package com.shopcompare.scraper.product.scraping;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
 

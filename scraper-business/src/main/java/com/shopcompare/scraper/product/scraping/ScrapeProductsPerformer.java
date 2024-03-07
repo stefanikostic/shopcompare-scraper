@@ -1,8 +1,7 @@
-package com.shopcompare.scraper.scraping;
+package com.shopcompare.scraper.product.scraping;
 
 import com.shopcompare.scraper.rabbitmq.model.Product;
-import com.shopcompare.scraper.scraping.exception.FailedScrapingException;
-import com.shopcompare.scraper.scraping.products.ScrapingProductsService;
+import com.shopcompare.scraper.product.scraping.exception.FailedScrapingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

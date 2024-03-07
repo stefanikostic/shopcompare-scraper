@@ -1,4 +1,4 @@
-package com.shopcompare.scraper.scraping.model;
+package com.shopcompare.scraper.category.scraping;
 
 /**
  * POJO for storing category details.

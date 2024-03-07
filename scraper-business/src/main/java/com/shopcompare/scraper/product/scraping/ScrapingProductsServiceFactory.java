@@ -1,7 +1,5 @@
-package com.shopcompare.scraper.scraping;
+package com.shopcompare.scraper.product.scraping;
 
-import com.shopcompare.scraper.scraping.products.DefaultScrapingProductsService;
-import com.shopcompare.scraper.scraping.products.ScrapingProductsService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

@@ -1,7 +1,5 @@
-package com.shopcompare.scraper.scraping.category;
+package com.shopcompare.scraper.category.scraping;
 
-import com.shopcompare.scraper.scraping.exception.FailedScrapingException;
-import com.shopcompare.scraper.scraping.model.CategoryLink;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -52,7 +50,7 @@ public class NeptunCategoryLinksFetcher implements CategoryLinksFetcher {
             return categoryLinks;
         } catch (Exception e) {
             log.error("Invalid url: {}. Failed scraping categories for shop {}", url, NEPTUN);
-            throw new FailedScrapingException(NEPTUN);
+            throw new FailedScrapingCategoryException(NEPTUN);
         }
     }
 

@@ -1,6 +1,5 @@
-package com.shopcompare.scraper.scraping.category;
+package com.shopcompare.scraper.category.scraping;
 
-import com.shopcompare.scraper.scraping.model.CategoryLink;
 
 import java.util.Set;
 

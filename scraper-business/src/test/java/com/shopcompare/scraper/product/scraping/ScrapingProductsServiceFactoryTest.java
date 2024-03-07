@@ -1,8 +1,5 @@
-package com.shopcompare.scraper.scraping;
+package com.shopcompare.scraper.product.scraping;
 
-import com.shopcompare.scraper.scraping.products.DefaultScrapingProductsService;
-import com.shopcompare.scraper.scraping.products.ScrapingProductsService;
-import com.shopcompare.scraper.scraping.products.SetecScrapingProductsService;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
