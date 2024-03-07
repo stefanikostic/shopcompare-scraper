@@ -55,7 +55,7 @@ public class SetecCategoryLinksFetcher implements CategoryLinksFetcher {
             return categoryLinks;
         } catch (Exception e) {
             log.error("Invalid url: {}. Failed scraping categories for shop {}", url, SETEC);
-            throw new FailedScrapingCategoryException(SETEC);
+            throw new FailedScrapingCategoryException();
         }
     }
 

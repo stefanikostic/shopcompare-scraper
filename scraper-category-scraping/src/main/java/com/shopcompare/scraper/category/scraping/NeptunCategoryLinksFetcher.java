@@ -50,7 +50,7 @@ public class NeptunCategoryLinksFetcher implements CategoryLinksFetcher {
             return categoryLinks;
         } catch (Exception e) {
             log.error("Invalid url: {}. Failed scraping categories for shop {}", url, NEPTUN);
-            throw new FailedScrapingCategoryException(NEPTUN);
+            throw new FailedScrapingCategoryException();
         }
     }
 
