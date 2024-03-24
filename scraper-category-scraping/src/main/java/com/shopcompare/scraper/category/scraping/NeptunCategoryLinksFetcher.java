@@ -29,7 +29,6 @@ public class NeptunCategoryLinksFetcher implements CategoryLinksFetcher {
     private static final String HREF_ATTRIBUTE = "href";
     private static final String NEPTUN_MAIN_URL = "https://www.neptun.mk";
 
-
     @Override
     public Set<CategoryLink> fetchCategoriesLinks(String url) {
         try {

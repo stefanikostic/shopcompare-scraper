@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * Properties class for scraping shops using their websites URLs.
+ */
 @Getter
 @Setter
 @Configuration

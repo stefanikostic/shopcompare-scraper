@@ -33,5 +33,10 @@ public interface ScrapingProductsService {
      */
     Set<Product> scrapeAndExtract(String shop, String category, String url) throws IOException;
 
+    /**
+     * Returns the shop name of the dedicated shop {@link ScrapingProductsService}.
+     *
+     * @return name of the shop.
+     */
     String shopName();
 }
