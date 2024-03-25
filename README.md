@@ -2,9 +2,9 @@
  
 Table of contents
 ---
-- [General info](#-General-info-)
+- [General info](#general-info)
 - [How it works](#how-it-works)
-- [Other information](#-Other-information-)
+- [Other information](#other-information)
 <br/>
 
 General info 
@@ -19,7 +19,8 @@ Scraper app presents an application for scraping categories and products out of 
 that sell variety of appliances and electronic devices. The products data is being fetched by scraping the websites
 of the most popular markets in Macedonia for appliances, white goods and other electronic devices.
 
-#### How it works 
+How it works
+---
 Before diving deep into the logic of scraping products, it's essential to have determined the categories of those 
 products.
 In order to perform scraping of the products from the shop website, we need to traverse throughout all categories, 
@@ -39,8 +40,8 @@ The procedure of scraping data of each shop is the following:
    `scraped_products`.
 
 
-#### Other information
-
+Other information
+---
 ##### scraper-category-scraping
 About the process of **scraping category links**, the definitions of the methods used can be found in class 
 [CategoryLinksFetcher](scraper-category-scraping/src/main/java/com/shopcompare/scraper/category/scraping/CategoryLinksFetcher.java).
